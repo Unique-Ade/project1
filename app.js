@@ -81,3 +81,16 @@ addBtn.addEventListener("click", function (e) {
 });
 
 //search function
+//Check if a book title is available
+//steps:
+//1.Iterate through our list of books
+//2.Action to perform when there is a match/no match in the search.
+//3.collect the input search value and compare with book titles.
+//4.Attach an event to the searchbox
+
+//selecting the input of search from the HTML
+let searchBox =  document.getElementById('searchBooks');
+
+searchBox.addEventListener('keyup', function(e){
+    let searchTerm = e.target.value.toLowerCase();
+})
