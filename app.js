@@ -77,7 +77,6 @@ addBtn.addEventListener("click", function (e) {
   deleteBook.addEventListener("click", function () {
     parent.removeChild(li);
   });
-  
 });
 
 //search function
@@ -89,8 +88,23 @@ addBtn.addEventListener("click", function (e) {
 //4.Attach an event to the searchbox
 
 //selecting the input of search from the HTML
-let searchBox =  document.getElementById('searchBooks');
+let searchBox = document.getElementById("searchBooks");
 
-searchBox.addEventListener('keyup', function(e){
-    let searchTerm = e.target.value.toLowerCase();
-})
+searchBox.addEventListener("keyup", function (e) {
+  let searchTerm = e.target.value.toLowerCase();
+
+  //selecting the titles
+  let books = parent.getElementsByTagName("li");
+  Array.from(books).forEach((book) => {
+  let title = book.firstElementChild.textContent;
+
+    //comparing the search term and the titles
+    //when -1 is returned, it means the search term does not exist.
+    // != -1 means the search term do exist in the title.
+    if (title.toLowerCase().indexOf(searchTerm) != -1) {
+      book.style.display = "block";
+    } else {
+      book.style.display = "none";
+    }
+  });
+});
